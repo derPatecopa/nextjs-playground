@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const page = () => {
   const [todos, setTodos] = useState([]);
   const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -21,8 +22,12 @@ const page = () => {
   //   fetchData();
   // }, []);
 
-  const handleChange = (e) => {
+  const handleChangeUser = (e) => {
     setUserName(e.target.value);
+  };
+
+  const handleChangePw = (e) => {
+    setPassword(e.target.value);
   };
 
   const postData = async (userName) => {
@@ -44,8 +49,20 @@ const page = () => {
   return (
     <div>
       <form>
-        <input type="text" value={userName} onChange={handleChange} />
-        <p>{userName}</p>
+        <label>Username: </label>
+        <input
+          type="text"
+          value={userName}
+          onChange={handleChangeUser}
+          className="bg-orange-200"
+        />
+        <label>Password: </label>
+        <input
+          type="text"
+          value={password}
+          onChange={handleChangePw}
+          className="bg-orange-200"
+        />
       </form>
       <button
         onClick={() => {
