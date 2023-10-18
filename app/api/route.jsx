@@ -4,19 +4,15 @@ import { PrismaClient } from "@prisma/client";
 
 const DATA_SOURCE_URL = "https://jsonplaceholder.typicode.com/todos";
 
-export async function GET() {
-  const res = await fetch(DATA_SOURCE_URL);
-  const todos = await res.json();
-  return NextResponse.json(todos);
-}
 
 export async function POST(req, res) {
-  const { userName } = await req.json();
+  const { userName, password } = await req.json();
   try {
     const prisma = new PrismaClient();
     const newUser = await prisma.TestUser.create({
       data: {
         userName,
+        password,
       },
     });
     await prisma.$disconnect();

@@ -8,19 +8,7 @@ const page = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch("/api");
-  //       const data = await response.json();
-  //       setTodos(data);
-  //     } catch (error) {
-  //       console.error("Error occurred:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  
 
   const handleChangeUser = (e) => {
     setUserName(e.target.value);
@@ -30,14 +18,14 @@ const page = () => {
     setPassword(e.target.value);
   };
 
-  const postData = async (userName) => {
+  const postData = async (userName, password) => {
     try {
       const response = await fetch("/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userName }),
+        body: JSON.stringify({ userName, password }),
       });
       const data = await response.json();
       console.log(data);
@@ -66,7 +54,7 @@ const page = () => {
       </form>
       <button
         onClick={() => {
-          postData(userName);
+          postData(userName, password);
         }}
         disabled={!userName}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
