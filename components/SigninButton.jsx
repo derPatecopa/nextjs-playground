@@ -3,7 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
-
+//default signin modal from next-auth
 const SigninButton = () => {
   const { data: session } = useSession();
 

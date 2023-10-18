@@ -1,8 +1,9 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from "./prisma";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 const login = async (username, password) => {
+  const prisma = new PrismaClient();
   const user = await prisma.user.findFirst({
     where: {
       email: username,

@@ -3,24 +3,23 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-
 const page = () => {
   const [todos, setTodos] = useState([]);
   const [userName, setUserName] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api");
-        const data = await response.json();
-        setTodos(data);
-      } catch (error) {
-        console.error("Error occurred:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("/api");
+  //       const data = await response.json();
+  //       setTodos(data);
+  //     } catch (error) {
+  //       console.error("Error occurred:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const handleChange = (e) => {
     setUserName(e.target.value);
@@ -55,7 +54,7 @@ const page = () => {
         disabled={!userName}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
-        Press me
+        Save to Database
       </button>
       <ul>
         {todos.map((todo) => (
