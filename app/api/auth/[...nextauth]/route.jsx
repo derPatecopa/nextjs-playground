@@ -4,13 +4,13 @@ import { Prisma, PrismaClient } from "@prisma/client";
 
 const login = async (username, password) => {
   const prisma = new PrismaClient();
-  const user = await prisma.user.findFirst({
+  const user = await prisma.TestUser.findFirst({
     where: {
-      email: username,
+      userName: username,
     },
   });
 
-  if (user && (await compare(password, user.password))) {
+  if (user && user.password === password) {
     user.password = "";
     return user;
   } else {

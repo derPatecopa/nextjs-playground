@@ -18,7 +18,7 @@ const Login = () => {
     });
 
     if (!res?.error) {
-      router.push("http://localhost:3000");
+      router.push("http://localhost:3001");
     }
   };
   return (
