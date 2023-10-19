@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
+
 
 const page = () => {
-  const [todos, setTodos] = useState([]);
+  
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -61,11 +61,7 @@ const page = () => {
       >
         Save to Database
       </button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
+      
     </div>
   );
 };
